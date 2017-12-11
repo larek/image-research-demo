@@ -1,36 +1,13 @@
-window.onload = () => {
-    let img = document.querySelectorAll('.progressive'); 
-    for(let i = 0; i < img.length; i++){
-        imagine(img[i]);
-    }  
-}
-
 document.getElementById('sliceSize').oninput = e => {
     console.log(e.currentTarget.value)
     document.getElementById("sliceSizeDisplay").innerText = e.currentTarget.value;
 }
 
-function imagine(img){
-    let imgSrc = img.dataset.src;   
-    let sliceSize = 100 / img.dataset.percent;
-    getFileize(imgSrc, r => {
-        let xhr = new XMLHttpRequest;
-        xhr.open('GET', imgSrc, true);
-        xhr.responseType = 'blob';
-        xhr.setRequestHeader("Range", "bytes=0-" + r / sliceSize);
-        xhr.onload = r => {
-            let urlCreator = window.URL || window.webkitURL;
-            let imageUrl = urlCreator.createObjectURL( r.currentTarget.response );
-            img.src = imageUrl;
-            // let read = new FileReader();
-            // read.readAsDataURL(r.currentTarget.response);
-            // read.onloadend = () => {
-            //     img.src = read.result
-            // }
-        }
-        xhr.send();
-    })
+btnGetFile.onclick = () => {
+    loadJPEGs();
 }
+
+loadJPEGs();
 
 function addImage(data, container) {
     let image = document.createElement('img');
@@ -83,9 +60,3 @@ function loadJPEGs(){
         addImage(r, document.getElementById('resultProgressive'))
     });  
 };
-
-btnGetFile.onclick = () => {
-    loadJPEGs();
-}
-
-loadJPEGs();

@@ -11,7 +11,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/progressive', (req, res) => {
-  res.render('progressive');
+  res.render('progressive', {js: 'progressive.js'});
+});
+
+app.get('/responsive-progressive', (req, res) => {
+  res.render('responsive-progressive', {js: 'responsive-progressive.js'});
 });
 
 app.listen(3000, () => {
