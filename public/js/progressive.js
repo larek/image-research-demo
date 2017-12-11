@@ -5,6 +5,11 @@ window.onload = () => {
     }  
 }
 
+document.getElementById('sliceSize').oninput = e => {
+    console.log(e.currentTarget.value)
+    document.getElementById("sliceSizeDisplay").innerText = e.currentTarget.value;
+}
+
 function imagine(img){
     let imgSrc = img.dataset.src;   
     let sliceSize = 100 / img.dataset.percent;
@@ -34,14 +39,6 @@ function addImage(data, container) {
     image.onload = r => {
          if(container.firstChild) container.firstChild.remove();
          container.prepend(image);
-    }
-}
-
-function readPartial(blob, callback) {
-    let read = new FileReader();
-    read.readAsDataURL(blob);
-    read.onloadend = () => {
-        callback(read.result)
     }
 }
 
@@ -76,9 +73,7 @@ function getFileChunk(url, percent, callback){
     })
 }
 
-
-btnGetFile.onclick = () => {
-
+function loadJPEGs(){
     let percent = document.getElementById('sliceSize').value
     getFileChunk('./images/ny.jpg', percent, r => {
         addImage(r, document.getElementById('result'))
@@ -86,5 +81,11 @@ btnGetFile.onclick = () => {
 
     getFileChunk('./images/ny-progressive.jpg', percent, r => {
         addImage(r, document.getElementById('resultProgressive'))
-    });
+    });  
+};
+
+btnGetFile.onclick = () => {
+    loadJPEGs();
 }
+
+loadJPEGs();
