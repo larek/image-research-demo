@@ -18,6 +18,10 @@ app.get('/responsive-progressive', (req, res) => {
   res.render('responsive-progressive', {js: 'responsive-progressive.js'});
 });
 
+app.get('/decode-promise', (req, res) => {
+  res.render('decode-promise', {js: 'decode-promise.js'});
+});
+
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 })

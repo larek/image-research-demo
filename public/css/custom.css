@@ -1,8 +1,12 @@
-#result > img, #resultProgressive > img,{
+#result > img, #resultProgressive > img{
     width: 100%;
 }
 
 .progressive{
   width: 100%;
   padding-bottom:10px;
+}
+
+.btn{
+  cursor:pointer;
 }
