@@ -1,16 +1,18 @@
 btnGetFileDecode.onclick = function(){
     let img = new Image;
-    img.src = '/images/cracked_planet_4k-wide.jpg';
+    img.src = '/images/nebula.jpg';
     img.decode().then(() => {
-        result.appendChild(img)
+        // result.appendChild(img)
+        document.body.append(img);
     })
 }
-
+//todo попробуй сделать задержку между декодированием и выводом и покажи, что само по себе декодирование уже не занимает общий поток. а GNU тратися на то, чтобы пережать картинку из большого формата в маленький формат. О как!
 
 getimg.onclick = () => {
 let img = new Image();
-    img.src = '/images/cracked_planet_4k-wide.jpg';
-    result.append(img);
+    img.src = '/images/nebula.jpg';
+    // result.append(img);
+    document.body.append(img);
 }
 
     // -----------------------------------------------
