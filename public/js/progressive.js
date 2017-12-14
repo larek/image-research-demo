@@ -1,5 +1,4 @@
 document.getElementById('sliceSize').oninput = e => {
-    console.log(e.currentTarget.value)
     document.getElementById("sliceSizeDisplay").innerText = e.currentTarget.value;
 }
 
@@ -9,20 +8,10 @@ btnGetFile.onclick = () => {
 
 loadJPEGs();
 
-function addImage(data, container) {
-    let image = document.createElement('img');
-
-    image.setAttribute('src', data);
-    image.onload = r => {
-         if(container.firstChild) container.firstChild.remove();
-         container.prepend(image);
-    }
-}
 
 function getFileSize(url, callback) {
     let xhr = new XMLHttpRequest();
-    xhr.open("HEAD", url, true); // Notice "HEAD" instead of "GET",
-    //  to get only the header
+    xhr.open("HEAD", url, true); // HEAD instead of GET
     xhr.onreadystatechange = function() {
         if (this.readyState == this.DONE) {
             callback(parseInt(xhr.getResponseHeader("Content-Length")));
@@ -42,12 +31,20 @@ function getFileChunk(url, percent, callback){
             let read = new FileReader();
             read.readAsDataURL(r.currentTarget.response);
             read.onloadend = () => {
-                console.log(read);
                 callback(read.result);
             }
         }
         xhr.send();
     })
+}
+
+function addImage(data, container) {
+    let image = document.createElement('img');
+    image.setAttribute('src', data);
+    image.onload = r => {
+         if(container.firstChild) container.firstChild.remove();
+         container.prepend(image);
+    }
 }
 
 function loadJPEGs(){

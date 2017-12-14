@@ -26,6 +26,10 @@ app.get('/image-effect', (req, res) => {
   res.render('image-effect', {js: 'image-effect.js'});
 });
 
+app.get('/chroma-sampling', (req, res) => {
+  res.render('chroma-sampling', {js: ''});
+});
+
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 })

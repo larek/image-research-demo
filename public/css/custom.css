@@ -39,3 +39,7 @@
   /* this is needed so Safari keeps sharp edges */
   transform: scale(1);
 }
+
+a.nav-link {
+    text-align: right;
+}

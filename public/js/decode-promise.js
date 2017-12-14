@@ -6,7 +6,6 @@ btnGetFileDecode.onclick = function(){
         document.body.append(img);
     })
 }
-//todo попробуй сделать задержку между декодированием и выводом и покажи, что само по себе декодирование уже не занимает общий поток. а GNU тратися на то, чтобы пережать картинку из большого формата в маленький формат. О как!
 
 getimg.onclick = () => {
 let img = new Image();
@@ -17,12 +16,12 @@ let img = new Image();
 
     // -----------------------------------------------
 // Change this to change revolution delay.
-var revolutionTimeMs = 2000;
+let revolutionTimeMs = 2000;
 
-var angle = 0.0;
-var dAnglePerMs = 360.0 / revolutionTimeMs;
-var arrowElement = document.getElementById("arrow");
-var done = false;
+let angle = 0.0;
+let dAnglePerMs = 360.0 / revolutionTimeMs;
+let arrowElement = document.getElementById("arrow");
+let done = false;
 
 // Rotate the arrow.
 function advanceArrow(deltaMs) {
@@ -37,11 +36,11 @@ function advanceArrow(deltaMs) {
   arrowElement.style.transform = "rotate(" + angle + "deg)";
 }
 
-var lastTimestamp = 0;
+let lastTimestamp = 0;
 function go(timestamp) {
   if (!lastTimestamp)
     lastTimestamp = timestamp;
-  var deltaMs = timestamp - lastTimestamp;
+  let deltaMs = timestamp - lastTimestamp;
   advanceArrow(deltaMs);
 
   lastTimestamp = timestamp;
