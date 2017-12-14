@@ -22,6 +22,10 @@ app.get('/decode-promise', (req, res) => {
   res.render('decode-promise', {js: 'decode-promise.js'});
 });
 
+app.get('/image-effect', (req, res) => {
+  res.render('image-effect', {js: 'image-effect.js'});
+});
+
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 })
